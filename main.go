@@ -2,23 +2,50 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"hockey-stick/calculations/curve"
 	"hockey-stick/calculations/flex"
 	"hockey-stick/calculations/hand"
 	"hockey-stick/calculations/kick"
 	"hockey-stick/calculations/length"
+	"charm.land/huh/v2"
 )
 
 func main(){
-	var hockeyType="Ball"
-	var position="Defenseman"
-	var weight=47
-	var height=162
-	var broomTopHand="Left"
+	var (
+		hockeyType string
+		position string
+		weight int
+		height int
+		broomTopHandPosition string
+	)
+	// hockeyType="Ball"
+	position="Defenseman"
+	weight=47
+	height=162
+	broomTopHandPosition="Left"
+
+	var form=huh.NewForm(
+		huh.NewGroup(
+			huh.NewSelect[string]().
+				Title("What kind of hockey do you play?").
+				Options(
+					huh.NewOption("Ice hockey", "Ice"),
+					huh.NewOption("Roller hockey", "Roller"),
+					huh.NewOption("Ball hockey", "Ball"),
+				).
+				Value(&hockeyType),
+		),
+	)
+
+	err:=form.Run()
+	if err!=nil{
+		log.Fatal(err)
+	}
 
 	var curve=curve.Get(hockeyType)
 	var flex=flex.Calculate(weight)
-	var hand=hand.Get(broomTopHand)
+	var hand=hand.Get(broomTopHandPosition)
 	var kick=kick.Get(position)
 	var length=length.Calculate(height, hockeyType, position)
 
