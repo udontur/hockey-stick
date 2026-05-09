@@ -2,92 +2,14 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"strconv"
-	"errors"
-	"hockey-stick/calculations/curve"
-	"hockey-stick/calculations/flex"
-	"hockey-stick/calculations/hand"
-	"hockey-stick/calculations/kick"
-	"hockey-stick/calculations/length"
-	"charm.land/huh/v2"
+	// "log"
+	"hockey-stick/hockey/form"
+	"hockey-stick/hockey/result"
 )
 
 func main(){
-	var (
-		hockeyType string
-		position string
-		strWeight string
-		strHeight string
-		broomTopHandPosition string
-	)
-	// hockeyType="Ball"
-	// position="Defenseman"
-	// weight=47
-	// strHeight="162"
-	// broomTopHandPosition="Left"
 
-	var form=huh.NewForm(
-		huh.NewGroup(
-			huh.NewSelect[string]().
-				Title("What kind of hockey do you play?").
-				Options(
-					huh.NewOption("Ice hockey", "Ice"),
-					huh.NewOption("Roller hockey", "Roller"),
-					huh.NewOption("Ball hockey", "Ball"),
-				).
-				Value(&hockeyType),
-			huh.NewSelect[string]().
-				Title("What position do you play?").
-				Options(
-					huh.NewOption("Winger (Forward)", "Winger"),
-					huh.NewOption("Center (Forward)", "Center"),
-					huh.NewOption("Defenseman", "Defenseman"),
-				).
-				Value(&position),
-		),
-		huh.NewGroup(
-			huh.NewInput().
-				Title("How much do you weigh? (In kg)").
-				Value(&strWeight).
-				Validate(func(str string) error {
-					if _, err:=strconv.Atoi(strWeight); err!=nil {
-						return errors.New("Please enter an integer")
-					}
-					return nil
-				}),
-			huh.NewInput().
-				Title("How tall are you? (In cm)").
-				Value(&strHeight).
-				Validate(func(str string) error {
-					if _, err:=strconv.Atoi(strHeight); err!=nil {
-						return errors.New("Please enter an integer")
-					}
-					return nil
-				}),
-			huh.NewSelect[string]().
-				Title("How do you hold a broom? (Try it now!)").
-				Options(
-					huh.NewOption("Left hand on top", "Left"),
-					huh.NewOption("Right hand on top", "Right"),
-				).
-				Value(&broomTopHandPosition),
-		),
-	)
-
-	err:=form.Run()
-	if err!=nil{
-		log.Fatal(err)
-	}
-
-	weight, _:=strconv.Atoi(strWeight)
-	height, _:=strconv.Atoi(strHeight)
-
-	var curve=curve.Get(hockeyType)
-	var flex=flex.Calculate(weight)
-	var hand=hand.Get(broomTopHandPosition)
-	var kick=kick.Get(position)
-	var length=length.Calculate(height, hockeyType, position)
+	curve, flex, hand, kick, length:=result.Process(form.QuestionForm())
 
 	fmt.Println(curve)
 	fmt.Println(flex)
