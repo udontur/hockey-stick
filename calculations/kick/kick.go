@@ -1,7 +1,6 @@
 package kick
 
-func get(position string) string {
-	var kick string
+func get(position string) (kick string) {
 	switch position{
 		case "Winger":
 			kick="Low"
