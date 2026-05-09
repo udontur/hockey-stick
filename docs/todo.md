@@ -1,0 +1,6 @@
+- [ ] Bubble tea TUI display
+- [ ] Check for GO's best practice
+- [ ] Format and check for bad code
+- [ ] Installation (GoReleaser: .deb, .rpm, .tar.xz binary)
+- [ ] use Charm VHS to record a demo 
+- [ ] Make Readme with demo, install instructions
