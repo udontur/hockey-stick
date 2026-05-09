@@ -13,5 +13,6 @@ func GetHand(broomTopHandPosition string) (hand string) {
 	default:
 		log.Fatal("Invalid broom top hand position. New mutation?")
 	}
-	return hand
+
+	return
 }

@@ -15,5 +15,6 @@ func GetKick(position string) (kick string) {
 	default:
 		log.Fatal("Invalid hockey position")
 	}
-	return kick
+
+	return
 }
