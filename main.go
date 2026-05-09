@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"strconv"
+	"errors"
 	"hockey-stick/calculations/curve"
 	"hockey-stick/calculations/flex"
 	"hockey-stick/calculations/hand"
@@ -15,14 +17,14 @@ func main(){
 	var (
 		hockeyType string
 		position string
-		weight int
-		height int
+		strWeight string
+		strHeight string
 		broomTopHandPosition string
 	)
 	// hockeyType="Ball"
 	// position="Defenseman"
-	weight=47
-	height=162
+	// weight=47
+	strHeight="162"
 	broomTopHandPosition="Left"
 
 	var form=huh.NewForm(
@@ -44,12 +46,28 @@ func main(){
 				).
 				Value(&position),
 		),
+		huh.NewGroup(
+			huh.NewInput().
+				Title("What much do you weigh? (In kg)").
+				Value(&strWeight).
+				Validate(func(str string) error {
+					if _, err:=strconv.Atoi(strWeight); err!=nil {
+						return errors.New("Weight is not an integer")
+					}
+					return nil
+				}),
+		),
 	)
+
+
 
 	err:=form.Run()
 	if err!=nil{
 		log.Fatal(err)
 	}
+
+	weight, _:=strconv.Atoi(strWeight)
+	height, _:=strconv.Atoi(strHeight)
 
 	var curve=curve.Get(hockeyType)
 	var flex=flex.Calculate(weight)
