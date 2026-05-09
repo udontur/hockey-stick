@@ -20,7 +20,7 @@ func main(){
 		broomTopHandPosition string
 	)
 	// hockeyType="Ball"
-	position="Defenseman"
+	// position="Defenseman"
 	weight=47
 	height=162
 	broomTopHandPosition="Left"
@@ -35,6 +35,14 @@ func main(){
 					huh.NewOption("Ball hockey", "Ball"),
 				).
 				Value(&hockeyType),
+			huh.NewSelect[string]().
+				Title("What position do you play?").
+				Options(
+					huh.NewOption("Winger (Forward)", "Winger"),
+					huh.NewOption("Center (Forward)", "Center"),
+					huh.NewOption("Defenseman", "Defenseman"),
+				).
+				Value(&position),
 		),
 	)
 
