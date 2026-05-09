@@ -1,5 +1,9 @@
 package kick
 
+import (
+	"log"
+)
+
 func Get(position string) (kick string) {
 	switch position{
 		case "Winger":
@@ -9,7 +13,7 @@ func Get(position string) (kick string) {
 		case "Defenseman":
 			kick="Mid"
 		default:
-			kick="Invalid position"
+			log.Fatal("Invalid hockey position")
 	}
 	return kick
 }
