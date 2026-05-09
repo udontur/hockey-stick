@@ -5,9 +5,11 @@ import(
 	"strconv"
 	"errors"
 	"log"
+
+	"hockey-stick/hockey/types"
 )
 
-func QuestionForm() (hockeyType string, position string, weight int, height int, broomTopHandPosition string){
+func QuestionForm() (player types.Player){
 	var strHeight, strWeight string
 	var form=huh.NewForm(
 		huh.NewGroup(
@@ -18,7 +20,7 @@ func QuestionForm() (hockeyType string, position string, weight int, height int,
 					huh.NewOption("Roller hockey", "Roller"),
 					huh.NewOption("Ball hockey", "Ball"),
 				).
-				Value(&hockeyType),
+				Value(&player.HockeyType),
 			huh.NewSelect[string]().
 				Title("What position do you play?").
 				Options(
@@ -26,7 +28,7 @@ func QuestionForm() (hockeyType string, position string, weight int, height int,
 					huh.NewOption("Center (Forward)", "Center"),
 					huh.NewOption("Defenseman", "Defenseman"),
 				).
-				Value(&position),
+				Value(&player.Position),
 		),
 		huh.NewGroup(
 			huh.NewInput().
@@ -53,7 +55,7 @@ func QuestionForm() (hockeyType string, position string, weight int, height int,
 					huh.NewOption("Left hand on top", "Left"),
 					huh.NewOption("Right hand on top", "Right"),
 				).
-				Value(&broomTopHandPosition),
+				Value(&player.BroomTopHandPosition),
 		),
 	)
 
@@ -62,7 +64,7 @@ func QuestionForm() (hockeyType string, position string, weight int, height int,
 		log.Fatal(err)
 	}
 
-	weight, _=strconv.Atoi(strWeight)
-	height, _=strconv.Atoi(strHeight)
+	player.Weight, _=strconv.Atoi(strWeight)
+	player.Height, _=strconv.Atoi(strHeight)
 	return
 }

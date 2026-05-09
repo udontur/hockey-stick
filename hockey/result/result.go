@@ -6,25 +6,11 @@ import (
 	"hockey-stick/calculations/hand"
 	"hockey-stick/calculations/kick"
 	"hockey-stick/calculations/length"
+
+	"hockey-stick/hockey/types"
 )
 
-type Player struct {
-	HockeyType string
-	Position string
-	Weight int
-	Height int
-	BroomTopHandPosition string
-}
-
-type Stick struct{
-	Curve string
-	Flex int
-	Hand string
-	Kick string
-	Length int
-}
-
-func Process(player Player) (stick Stick){
+func Process(player types.Player) (stick types.Stick){
 	stick.Curve=curve.Get(player.HockeyType)
 	stick.Flex=flex.Calculate(player.Weight)
 	stick.Hand=hand.Get(player.BroomTopHandPosition)
