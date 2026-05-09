@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func calculate(heightCm int, hockeyType string, position string) int {
+func Calculate(heightCm int, hockeyType string, position string) int {
 	var heightInch float64=float64(heightCm)*0.3937
 
 	var exactLength float64

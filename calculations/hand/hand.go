@@ -1,6 +1,6 @@
 package hand
 
-func get(broomTopHand string) (hand string) {
+func Get(broomTopHand string) (hand string) {
 	switch broomTopHand {
 		case "Left":
 			hand="Right"

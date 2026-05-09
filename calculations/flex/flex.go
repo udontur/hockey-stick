@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func calculate(weightKg int) int {
+func Calculate(weightKg int) int {
 	const flexFactor float64=1.1023
 
 	var exactFlex float64=float64(weightKg)*flexFactor

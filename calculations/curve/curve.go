@@ -1,6 +1,6 @@
 package curve
 
-func get(hockeyType string) (curve string){
+func Get(hockeyType string) (curve string){
 	switch hockeyType{
 		case "Ice", "Roller":
 			curve="P92"
