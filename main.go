@@ -25,7 +25,7 @@ func main(){
 	// position="Defenseman"
 	// weight=47
 	// strHeight="162"
-	broomTopHandPosition="Left"
+	// broomTopHandPosition="Left"
 
 	var form=huh.NewForm(
 		huh.NewGroup(
@@ -65,10 +65,15 @@ func main(){
 					}
 					return nil
 				}),
+			huh.NewSelect[string]().
+				Title("How do you hold a broom? (Try it now!)").
+				Options(
+					huh.NewOption("Left hand on top", "Left"),
+					huh.NewOption("Right hand on top", "Right"),
+				).
+				Value(&broomTopHandPosition),
 		),
 	)
-
-
 
 	err:=form.Run()
 	if err!=nil{
