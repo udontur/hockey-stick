@@ -48,11 +48,11 @@ func main(){
 		),
 		huh.NewGroup(
 			huh.NewInput().
-				Title("What much do you weigh? (In kg)").
+				Title("How much do you weigh? (In kg)").
 				Value(&strWeight).
 				Validate(func(str string) error {
 					if _, err:=strconv.Atoi(strWeight); err!=nil {
-						return errors.New("Weight is not an integer")
+						return errors.New("Please enter an integer")
 					}
 					return nil
 				}),
