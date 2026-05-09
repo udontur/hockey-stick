@@ -24,7 +24,7 @@ func main(){
 	// hockeyType="Ball"
 	// position="Defenseman"
 	// weight=47
-	strHeight="162"
+	// strHeight="162"
 	broomTopHandPosition="Left"
 
 	var form=huh.NewForm(
@@ -53,6 +53,15 @@ func main(){
 				Validate(func(str string) error {
 					if _, err:=strconv.Atoi(strWeight); err!=nil {
 						return errors.New("Weight is not an integer")
+					}
+					return nil
+				}),
+			huh.NewInput().
+				Title("How tall are you? (In cm)").
+				Value(&strHeight).
+				Validate(func(str string) error {
+					if _, err:=strconv.Atoi(strHeight); err!=nil {
+						return errors.New("Please enter an integer")
 					}
 					return nil
 				}),
