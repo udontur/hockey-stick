@@ -1,17 +1,17 @@
 package process
 
-import(
+import (
 	"charm.land/huh/v2"
-	"strconv"
 	"errors"
 	"log"
+	"strconv"
 
 	"hockey-stick/hockey/types"
 )
 
-func QuestionForm() (player types.Player){
+func QuestionForm() (player types.Player) {
 	var strHeight, strWeight string
-	var form=huh.NewForm(
+	var form = huh.NewForm(
 		huh.NewGroup(
 			huh.NewSelect[string]().
 				Title("What kind of hockey do you play?").
@@ -35,7 +35,7 @@ func QuestionForm() (player types.Player){
 				Title("How much do you weigh? (In kg)").
 				Value(&strWeight).
 				Validate(func(str string) error {
-					if _, err:=strconv.Atoi(strWeight); err!=nil {
+					if _, err := strconv.Atoi(strWeight); err != nil {
 						return errors.New("Please enter an integer")
 					}
 					return nil
@@ -44,7 +44,7 @@ func QuestionForm() (player types.Player){
 				Title("How tall are you? (In cm)").
 				Value(&strHeight).
 				Validate(func(str string) error {
-					if _, err:=strconv.Atoi(strHeight); err!=nil {
+					if _, err := strconv.Atoi(strHeight); err != nil {
 						return errors.New("Please enter an integer")
 					}
 					return nil
@@ -59,12 +59,12 @@ func QuestionForm() (player types.Player){
 		),
 	)
 
-	err:=form.Run()
-	if err!=nil{
+	err := form.Run()
+	if err != nil {
 		log.Fatal(err)
 	}
 
-	player.Weight, _=strconv.Atoi(strWeight)
-	player.Height, _=strconv.Atoi(strHeight)
+	player.Weight, _ = strconv.Atoi(strWeight)
+	player.Height, _ = strconv.Atoi(strHeight)
 	return
 }

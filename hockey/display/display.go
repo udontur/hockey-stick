@@ -5,7 +5,7 @@ import (
 	"hockey-stick/hockey/types"
 )
 
-func DisplayResult(stick types.Stick){
+func DisplayResult(stick types.Stick) {
 	fmt.Println(stick.Curve)
 	fmt.Println(stick.Flex)
 	fmt.Println(stick.Hand)

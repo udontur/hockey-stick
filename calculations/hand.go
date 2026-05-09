@@ -6,12 +6,12 @@ import (
 
 func GetHand(broomTopHandPosition string) (hand string) {
 	switch broomTopHandPosition {
-		case "Left":
-			hand="Right"
-		case "Right":
-			hand="Left"
-		default:
-			log.Fatal("Invalid broom top hand position. New mutation?")
+	case "Left":
+		hand = "Right"
+	case "Right":
+		hand = "Left"
+	default:
+		log.Fatal("Invalid broom top hand position. New mutation?")
 	}
 	return hand
 }
