@@ -2,7 +2,9 @@
 A terminal tool that finds your ideal hockey stick specs using a TUI form and some questions. 
 
 ## Installation
-Run the code with the following command
+Only Linux x86_64 and Linux Arm64 are supported. 
+
+You can install `hockey-stick` with the standalone installer:
 ```bash
-go run .
+curl -LsSf https://url.hadrian.cc/hockey-stick | sh
 ```
