@@ -6,5 +6,5 @@ Only Linux x86_64 and Linux Arm64 are supported.
 
 You can install `hockey-stick` with the standalone installer:
 ```bash
-curl -LsSf https://url.hadrian.cc/hockey-stick | sh
+curl -LsSf https://install.hadrian.cc/hockey-stick | sh
 ```
