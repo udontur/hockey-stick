@@ -1,6 +1,8 @@
 # 🏒 Hockey Stick Selector
 A terminal tool that finds your ideal hockey stick specs using a TUI form and some questions. 
 
+![](assets/demo.gif)
+
 ## 💾 Installation
 Linux (`x86_64` and `arm64`) are supported. 
 
