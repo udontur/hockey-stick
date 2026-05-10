@@ -9,7 +9,7 @@ You can install `hockey-stick` with the standalone installer:
 curl -LsSf https://install.hadrian.cc/hockey-stick | sh
 ```
 
-> ![NOTE]
+> [!NOTE]
 > You can also download the latest release from the [release page](https://github.com/udontur/hockey-stick/releases/latest).
 
 ## 🖥️ Usage
