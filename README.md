@@ -2,9 +2,20 @@
 A terminal tool that finds your ideal hockey stick specs using a TUI form and some questions. 
 
 ## Installation
-Only Linux (x86_64 and arm64) are supported. 
+Linux (x86_64 and arm64) are supported. 
 
+### Method 1: Standalone installer
 You can install `hockey-stick` with the standalone installer:
 ```bash
 curl -LsSf https://install.hadrian.cc/hockey-stick | sh
 ```
+
+### Method 2: Latest release
+You can also download the latest release from the [release page](https://github.com/udontur/hockey-stick/releases/latest)
+
+## Usage
+1. Run the following command in the terminal
+```bash
+hockey-stick
+```
+2. Answer the questions about you to find your ideal hockey stick specs!
