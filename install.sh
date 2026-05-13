@@ -3,10 +3,11 @@
 # GitHub raw linked redirected on install.hadrian.cc/hockey-stick by cloudflare page rule
 
 arch=$(uname -i)
+# TODO: jq isn't preinstalled on some system
 version=$(curl https://api.github.com/repos/udontur/hockey-stick/releases/latest -s | jq .name -r)
 link="https://github.com/udontur/hockey-stick/releases/download/$version/hockey-stick_${version}_Linux"
 
-dpkg --help > /dev/null
+dpkg --help &> /dev/null
 if [ $? -eq 0 ]; then
     echo "Debian-based operating system detected. "
     if [ $arch = "x86_64" ]; then
@@ -22,7 +23,7 @@ if [ $? -eq 0 ]; then
     exit 0
 fi
 
-rpm --help > /dev/null
+rpm --help &> /dev/null
 if [ $? -eq 0 ]; then
     echo "RPM-based operating system detected. "
     if [ $arch = "x86_64" ]; then
