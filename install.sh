@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# GitHub raw linked redirected on install.hadrian.cc/hockey-stick by cloudflare page rule
+
 arch=$(uname -i)
 version=$(curl https://api.github.com/repos/udontur/hockey-stick/releases/latest -s | jq .name -r)
 link="https://github.com/udontur/hockey-stick/releases/download/$version/hockey-stick_${version}_Linux"
