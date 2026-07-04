@@ -64,13 +64,11 @@ func DisplayResult(stick types.Stick) {
 		BorderForeground(secondary).
 		BorderBottom(true).
 		Foreground(secondary).
-		PaddingLeft(1).
-		PaddingRight(1).
-		AlignVertical(lipgloss.Center)
+		Padding(0, 1).
+		Align(lipgloss.Center)
 	style.Cell=lipgloss.NewStyle().
 		Foreground(primary).
-		PaddingLeft(1).
-		PaddingRight(1)
+		Padding(0, 1)
 
 	var tableWidth=0
 	for _, v := range columns{
