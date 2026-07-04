@@ -27,20 +27,21 @@ func (m model) Init() tea.Cmd {
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
-		switch msg := msg.(type) {
-		case tea.KeyPressMsg:
-			switch msg.String() {
-			case "q", "ctrl+c":
-				return m, tea.Quit
-			}
+	switch msg := msg.(type) {
+	case tea.KeyPressMsg:
+		switch msg.String() {
+		case "q", "ctrl+c":
+			return m, tea.Quit
 		}
-		m.table, cmd = m.table.Update(msg)
-		return m, cmd
+	}
+	m.table, cmd = m.table.Update(msg)
+	return m, cmd
 }
 
 var baseStyle = lipgloss.NewStyle().
 	BorderStyle(lipgloss.RoundedBorder()).
-	BorderForeground(secondary)
+	BorderForeground(secondary).
+	Foreground(primary)
 
 func cutHeader(body string) string{
 	var tableHeaderLinePos=strings.Index(body, "\n")
@@ -80,10 +81,11 @@ func DisplayResult(stick types.Stick) {
 	}
 
 	var style=table.DefaultStyles()
-	style.Header=lipgloss.NewStyle()
 	style.Cell=lipgloss.NewStyle().
-		Foreground(primary).
 		Padding(0, 1)
+	style.Selected=lipgloss.NewStyle().
+		Bold(true).
+		Background(theme)
 
 	var tableWidth=0
 	for _, v := range columns{
@@ -99,12 +101,12 @@ func DisplayResult(stick types.Stick) {
 		table.WithStyles(style),
 	)
 
-	var p = tea.NewProgram(model{
+	var display = tea.NewProgram(model{
 		table: displayTable,
 		title: "Your Ideal Stick Specs",
 		tableWidth: tableWidth,
 	})
-	if _, err := p.Run(); err != nil {
+	if _, err := display.Run(); err != nil {
 		fmt.Printf("Bad bad: %v", err)
 		os.Exit(1)
 	}

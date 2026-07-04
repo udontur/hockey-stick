@@ -1,6 +1,6 @@
-- [ ] Bubble tea TUI display
-    - [ ] Center header
-    - [ ] Background highlight theme color
+- [x] Bubble tea TUI display
+    - [x] Center header
+    - [x] Background highlight theme color
 - [ ] Kilo code review (add go best practices and industry standards, disable PR review)
 - [ ] Format and check for bad code
 - [x] Installation (GoReleaser: .deb, .rpm, .tar.xz binary)
