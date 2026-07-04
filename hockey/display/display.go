@@ -11,9 +11,11 @@ import (
 	"strings"
 )
 
-var primary=lipgloss.Color("#FFFFFF")
-var secondary=lipgloss.Color("#808080")
-var theme=lipgloss.Color("#01B2BA")
+var (
+	primary=lipgloss.Color("#FFFFFF")
+	secondary=lipgloss.Color("#808080")
+	theme=lipgloss.Color("#01B2BA")
+)
 
 var baseStyle = lipgloss.NewStyle().
 	BorderStyle(lipgloss.RoundedBorder()).

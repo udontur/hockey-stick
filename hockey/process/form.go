@@ -2,6 +2,7 @@ package process
 
 import (
 	"charm.land/huh/v2"
+	"charm.land/lipgloss/v2"
 	"errors"
 	"log"
 	"strconv"
@@ -57,7 +58,68 @@ func QuestionForm() (player types.Player) {
 				).
 				Value(&player.BroomTopHandPosition),
 		),
-	)
+	).WithTheme(
+		huh.ThemeFunc(func(isDark bool) *huh.Styles {
+			t := huh.ThemeBase(isDark)
+
+			var (
+				primary=lipgloss.Color("#FFFFFF")
+				secondary=lipgloss.Color("#808080")
+				theme=lipgloss.Color("#01B2BA")
+			)
+
+			// Question title
+			t.Focused.Title = t.Focused.Title.
+				Foreground(primary).
+				Bold(true)
+			// Sidebar select
+			t.Focused.Base=t.Focused.Base.
+				BorderForeground(secondary)
+			// Selection
+			t.Focused.SelectSelector = t.Focused.SelectSelector.
+				Background(theme).
+				Bold(true)
+			t.Focused.SelectedOption = t.Focused.SelectedOption.
+				Background(theme).
+				Bold(true)
+			t.Focused.UnselectedOption = t.Focused.UnselectedOption.
+				Foreground(primary)
+			// Text input
+			t.Focused.TextInput.Text = t.Focused.TextInput.Text.
+				Foreground(primary).
+				Background(theme).
+				Bold(true)
+			t.Focused.TextInput.Prompt = t.Focused.TextInput.Prompt.
+				Foreground(primary).
+				Background(theme).
+				Bold(true)
+
+			// Question title
+			t.Blurred=t.Focused
+			t.Blurred.Title=t.Focused.Title
+			// Sidebar select
+			t.Blurred.Base = t.Blurred.Base.
+				BorderStyle(lipgloss.HiddenBorder())
+			t.Blurred.SelectSelector = t.Blurred.SelectSelector.
+				Foreground(theme).
+				UnsetBackground().
+				Bold(true)
+			t.Blurred.SelectedOption = t.Blurred.SelectedOption.
+				Foreground(theme).
+				UnsetBackground().
+				Bold(true)
+			// Text input
+			t.Blurred.TextInput.Text=t.Blurred.TextInput.Text.
+				Foreground(primary).
+				Background(theme).
+				Bold(true)
+			t.Blurred.TextInput.Prompt=t.Blurred.TextInput.Prompt.
+				Foreground(primary).
+				Background(theme).
+				Bold(true)
+
+			return t
+		}))
 
 	err := form.Run()
 	if err != nil {
