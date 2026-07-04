@@ -109,6 +109,7 @@ func QuestionForm() (player types.Player) {
 				UnsetBackground().
 				Bold(true)
 			// Text input
+			// TODO: It doesn't apply, blocked up upstream fix: charmbracelet/huh #770
 			t.Blurred.TextInput.Text=t.Blurred.TextInput.Text.
 				Foreground(primary).
 				Background(theme).

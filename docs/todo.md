@@ -1,7 +1,10 @@
+## Fixes
+- [ ] `hockey/process/form.go:113` does not render properly (blocked, see charmbracele/huh #770) 
+
 - [x] Bubble tea TUI display
     - [x] Center header
     - [x] Background highlight theme color
-- [ ] Make huh form have the same as TUI
+- [x] Make huh form have the same as TUI
 - [ ] Kilo code review (add go best practices and industry standards, disable PR review)
 - [ ] Format and check for bad code
 - [x] Installation (GoReleaser: .deb, .rpm, .tar.xz binary)
