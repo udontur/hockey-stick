@@ -6,8 +6,7 @@ import (
 )
 
 func main() {
-	// var player = process.QuestionForm()
-	// var stick = process.ProcessResult(player)
-	var stick = process.ProcessResult()
+	var player = process.QuestionForm()
+	var stick = process.ProcessResult(player)
 	display.DisplayResult(stick)
 }

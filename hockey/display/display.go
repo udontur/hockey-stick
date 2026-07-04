@@ -68,8 +68,8 @@ func (m model) View() tea.View {
 
 func DisplayResult(stick types.Stick) {
 	var columns = []table.Column{
-		{Title: "", Width: 7},
-		{Title: "", Width: 5},
+		{Title: "", Width: 8},
+		{Title: "", Width: 8},
 	}
 
 	var rows = []table.Row{
@@ -104,7 +104,7 @@ func DisplayResult(stick types.Stick) {
 
 	var display = tea.NewProgram(model{
 		table: displayTable,
-		title: "Your Ideal Stick Specs",
+		title: "Your Ideal Hockey Stick Specs",
 		tableWidth: tableWidth,
 	})
 	if _, err := display.Run(); err != nil {
