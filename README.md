@@ -20,3 +20,5 @@ curl -LsSf https://install.hadrian.cc/hockey-stick | sh
 hockey-stick
 ```
 2. Answer the questions to find your ideal hockey stick specs!
+
+## AI Usage for Horizons Arcana
