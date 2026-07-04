@@ -13,3 +13,5 @@ Tidy deps: `go mod tidy`
 Checker: `go vet ./...`
 
 Generate demo (in `./assets`): `vhs demo.tape`
+
+Goreleaser local test: `goreleaser release --snapshot --clean`
