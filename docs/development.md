@@ -10,4 +10,6 @@ Format all: `go fmt ./...`
 
 Tidy deps: `go mod tidy`
 
+Checker: `go vet ./...`
+
 Generate demo (in `./assets`): `vhs demo.tape`
