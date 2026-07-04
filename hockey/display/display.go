@@ -5,22 +5,17 @@ import (
 	"charm.land/bubbles/v2/table"
 	"charm.land/lipgloss/v2"
 	"fmt"
+	"hockey-stick/hockey/theme"
 	"hockey-stick/hockey/types"
 	"os"
 	"strconv"
 	"strings"
 )
 
-var (
-	primary=lipgloss.Color("#FFFFFF")
-	secondary=lipgloss.Color("#808080")
-	theme=lipgloss.Color("#01B2BA")
-)
-
 var baseStyle = lipgloss.NewStyle().
 	BorderStyle(lipgloss.RoundedBorder()).
-	BorderForeground(secondary).
-	Foreground(primary)
+	BorderForeground(theme.Secondary).
+	Foreground(theme.Primary)
 
 func cutHeader(body string) string{
 	var tableHeaderLinePos=strings.Index(body, "\n")
@@ -56,9 +51,9 @@ func (m model) View() tea.View {
 		Width(m.tableWidth).
 		Bold(true).
 		BorderStyle(lipgloss.NormalBorder()).
-		BorderForeground(secondary).
+		BorderForeground(theme.Secondary).
 		BorderBottom(true).
-		Foreground(secondary).
+		Foreground(theme.Secondary).
 		Padding(0, 1).
 		Align(lipgloss.Center).
 		Render(m.title)
@@ -88,7 +83,7 @@ func DisplayResult(stick types.Stick) {
 		Padding(0, 1)
 	style.Selected=lipgloss.NewStyle().
 		Bold(true).
-		Background(theme)
+		Background(theme.Accent)
 
 	var tableWidth=0
 	for _, v := range columns{

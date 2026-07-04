@@ -7,6 +7,7 @@ import (
 	"log"
 	"strconv"
 
+	"hockey-stick/hockey/theme"
 	"hockey-stick/hockey/types"
 )
 
@@ -62,36 +63,30 @@ func QuestionForm() (player types.Player) {
 		huh.ThemeFunc(func(isDark bool) *huh.Styles {
 			t := huh.ThemeBase(isDark)
 
-			var (
-				primary=lipgloss.Color("#FFFFFF")
-				secondary=lipgloss.Color("#808080")
-				theme=lipgloss.Color("#01B2BA")
-			)
-
 			// Question title
 			t.Focused.Title = t.Focused.Title.
-				Foreground(primary).
+				Foreground(theme.Primary).
 				Bold(true)
 			// Sidebar select
 			t.Focused.Base=t.Focused.Base.
-				BorderForeground(secondary)
+				BorderForeground(theme.Secondary)
 			// Selection
 			t.Focused.SelectSelector = t.Focused.SelectSelector.
-				Background(theme).
+				Background(theme.Accent).
 				Bold(true)
 			t.Focused.SelectedOption = t.Focused.SelectedOption.
-				Background(theme).
+				Background(theme.Accent).
 				Bold(true)
 			t.Focused.UnselectedOption = t.Focused.UnselectedOption.
-				Foreground(primary)
+				Foreground(theme.Primary)
 			// Text input
 			t.Focused.TextInput.Text = t.Focused.TextInput.Text.
-				Foreground(primary).
-				Background(theme).
+				Foreground(theme.Primary).
+				Background(theme.Accent).
 				Bold(true)
 			t.Focused.TextInput.Prompt = t.Focused.TextInput.Prompt.
-				Foreground(primary).
-				Background(theme).
+				Foreground(theme.Primary).
+				Background(theme.Accent).
 				Bold(true)
 
 			// Question title
@@ -101,22 +96,22 @@ func QuestionForm() (player types.Player) {
 			t.Blurred.Base = t.Blurred.Base.
 				BorderStyle(lipgloss.HiddenBorder())
 			t.Blurred.SelectSelector = t.Blurred.SelectSelector.
-				Foreground(theme).
+				Foreground(theme.Accent).
 				UnsetBackground().
 				Bold(true)
 			t.Blurred.SelectedOption = t.Blurred.SelectedOption.
-				Foreground(theme).
+				Foreground(theme.Accent).
 				UnsetBackground().
 				Bold(true)
 			// Text input
 			// TODO: It doesn't apply, blocked up upstream fix: charmbracelet/huh #770
 			t.Blurred.TextInput.Text=t.Blurred.TextInput.Text.
-				Foreground(primary).
-				Background(theme).
+				Foreground(theme.Primary).
+				Background(theme.Accent).
 				Bold(true)
 			t.Blurred.TextInput.Prompt=t.Blurred.TextInput.Prompt.
-				Foreground(primary).
-				Background(theme).
+				Foreground(theme.Primary).
+				Background(theme.Accent).
 				Bold(true)
 
 			return t
