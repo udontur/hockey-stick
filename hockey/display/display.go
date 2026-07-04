@@ -15,6 +15,17 @@ var primary=lipgloss.Color("#FFFFFF")
 var secondary=lipgloss.Color("#808080")
 var theme=lipgloss.Color("#01B2BA")
 
+var baseStyle = lipgloss.NewStyle().
+	BorderStyle(lipgloss.RoundedBorder()).
+	BorderForeground(secondary).
+	Foreground(primary)
+
+func cutHeader(body string) string{
+	var tableHeaderLinePos=strings.Index(body, "\n")
+	body=body[tableHeaderLinePos+1:]
+	return body
+}
+
 type model struct {
 	table table.Model
 	title string
@@ -36,17 +47,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 	m.table, cmd = m.table.Update(msg)
 	return m, cmd
-}
-
-var baseStyle = lipgloss.NewStyle().
-	BorderStyle(lipgloss.RoundedBorder()).
-	BorderForeground(secondary).
-	Foreground(primary)
-
-func cutHeader(body string) string{
-	var tableHeaderLinePos=strings.Index(body, "\n")
-	body=body[tableHeaderLinePos+1:]
-	return body
 }
 
 func (m model) View() tea.View {
@@ -81,6 +81,7 @@ func DisplayResult(stick types.Stick) {
 	}
 
 	var style=table.DefaultStyles()
+	style.Header=lipgloss.NewStyle()
 	style.Cell=lipgloss.NewStyle().
 		Padding(0, 1)
 	style.Selected=lipgloss.NewStyle().
