@@ -68,7 +68,7 @@ func QuestionForm() (player types.Player) {
 				Foreground(theme.Primary).
 				Bold(true)
 			// Sidebar select
-			t.Focused.Base=t.Focused.Base.
+			t.Focused.Base = t.Focused.Base.
 				BorderForeground(theme.Secondary)
 			// Selection
 			t.Focused.SelectSelector = t.Focused.SelectSelector.
@@ -90,8 +90,8 @@ func QuestionForm() (player types.Player) {
 				Bold(true)
 
 			// Question title
-			t.Blurred=t.Focused
-			t.Blurred.Title=t.Focused.Title
+			t.Blurred = t.Focused
+			t.Blurred.Title = t.Focused.Title
 			// Sidebar select
 			t.Blurred.Base = t.Blurred.Base.
 				BorderStyle(lipgloss.HiddenBorder())
@@ -105,11 +105,11 @@ func QuestionForm() (player types.Player) {
 				Bold(true)
 			// Text input
 			// TODO: It doesn't apply, blocked up upstream fix: charmbracelet/huh #770
-			t.Blurred.TextInput.Text=t.Blurred.TextInput.Text.
+			t.Blurred.TextInput.Text = t.Blurred.TextInput.Text.
 				Foreground(theme.Primary).
 				Background(theme.Accent).
 				Bold(true)
-			t.Blurred.TextInput.Prompt=t.Blurred.TextInput.Prompt.
+			t.Blurred.TextInput.Prompt = t.Blurred.TextInput.Prompt.
 				Foreground(theme.Primary).
 				Background(theme.Accent).
 				Bold(true)

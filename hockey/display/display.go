@@ -1,8 +1,8 @@
 package display
 
 import (
-	tea "charm.land/bubbletea/v2"
 	"charm.land/bubbles/v2/table"
+	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
 	"fmt"
 	"hockey-stick/hockey/theme"
@@ -17,15 +17,15 @@ var baseStyle = lipgloss.NewStyle().
 	BorderForeground(theme.Secondary).
 	Foreground(theme.Primary)
 
-func cutHeader(body string) string{
-	var tableHeaderLinePos=strings.Index(body, "\n")
-	body=body[tableHeaderLinePos+1:]
+func cutHeader(body string) string {
+	var tableHeaderLinePos = strings.Index(body, "\n")
+	body = body[tableHeaderLinePos+1:]
 	return body
 }
 
 type model struct {
-	table table.Model
-	title string
+	table      table.Model
+	title      string
 	tableWidth int
 }
 
@@ -47,7 +47,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() tea.View {
-	var header=lipgloss.NewStyle().
+	var header = lipgloss.NewStyle().
 		Width(m.tableWidth).
 		Bold(true).
 		BorderStyle(lipgloss.NormalBorder()).
@@ -59,8 +59,8 @@ func (m model) View() tea.View {
 		Render(m.title)
 
 	var body = cutHeader(m.table.View())
-	var document=baseStyle.Render(header+"\n"+body)
-	return tea.NewView(document+"\n")
+	var document = baseStyle.Render(header + "\n" + body)
+	return tea.NewView(document + "\n")
 }
 
 func DisplayResult(stick types.Stick) {
@@ -74,23 +74,23 @@ func DisplayResult(stick types.Stick) {
 		{"Curve", stick.Curve},
 		{"Flex", strconv.Itoa(stick.Flex)},
 		{"Kick", stick.Kick},
-		{"Length", (strconv.Itoa(stick.Length)+"\"")},
+		{"Length", (strconv.Itoa(stick.Length) + "\"")},
 	}
 
-	var style=table.DefaultStyles()
-	style.Header=lipgloss.NewStyle()
-	style.Cell=lipgloss.NewStyle().
+	var style = table.DefaultStyles()
+	style.Header = lipgloss.NewStyle()
+	style.Cell = lipgloss.NewStyle().
 		Padding(0, 1)
-	style.Selected=lipgloss.NewStyle().
+	style.Selected = lipgloss.NewStyle().
 		Bold(true).
 		Background(theme.Accent)
 
-	var tableWidth=0
-	for _, v := range columns{
-		tableWidth+=v.Width+2
+	var tableWidth = 0
+	for _, v := range columns {
+		tableWidth += v.Width + 2
 	}
 
-	var displayTable=table.New(
+	var displayTable = table.New(
 		table.WithColumns(columns),
 		table.WithRows(rows),
 		table.WithFocused(true),
@@ -100,8 +100,8 @@ func DisplayResult(stick types.Stick) {
 	)
 
 	var display = tea.NewProgram(model{
-		table: displayTable,
-		title: "Your Ideal Hockey Stick Specs",
+		table:      displayTable,
+		title:      "Your Ideal Hockey Stick Specs",
 		tableWidth: tableWidth,
 	})
 	if _, err := display.Run(); err != nil {
