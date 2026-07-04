@@ -42,6 +42,12 @@ var baseStyle = lipgloss.NewStyle().
 	BorderStyle(lipgloss.RoundedBorder()).
 	BorderForeground(secondary)
 
+func cutHeader(body string) string{
+	var tableHeaderLinePos=strings.Index(body, "\n")
+	body=body[tableHeaderLinePos+1:]
+	return body
+}
+
 func (m model) View() tea.View {
 	var header=lipgloss.NewStyle().
 		Width(m.tableWidth).
@@ -54,11 +60,9 @@ func (m model) View() tea.View {
 		Align(lipgloss.Center).
 		Render(m.title)
 
-	var body = m.table.View()
-	var tableHeaderLinePos=strings.Index(body, "\n")
-	body=body[tableHeaderLinePos+1:]
-	var document=header+"\n"+body
-	return tea.NewView(baseStyle.Render(document)+"\n"+m.table.HelpView()+"\n")
+	var body = cutHeader(m.table.View())
+	var document=baseStyle.Render(header+"\n"+body)
+	return tea.NewView(document+"\n")
 }
 
 func DisplayResult(stick types.Stick) {
