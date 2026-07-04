@@ -42,7 +42,7 @@ nfpms:
     vendor: udontur
     homepage: https://github.com/udontur/hockey-stick
     maintainer: Hadrian <contact@hadrian.cc>
-    description: A CLI tool that finds your ideal hockey stick specs with a TUI form.
+    description: A terminal tool that finds your ideal hockey stick specs.
     license: MIT
     formats:
         - deb

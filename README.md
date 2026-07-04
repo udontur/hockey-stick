@@ -1,10 +1,10 @@
 # 🏒 Hockey Stick Selector
-A terminal tool that finds your ideal hockey stick specs using a TUI form and some questions. 
+A terminal tool that finds your ideal hockey stick specs. 
 
 ![](assets/demo.gif)
 
 ## 💾 Installation
-Supported on Linux `x86_64` and `arm64`.
+`hockey-stick` is supported on Linux `x86_64` and `arm64`.
 
 You can install `hockey-stick` with our standalone installer:
 ```bash
