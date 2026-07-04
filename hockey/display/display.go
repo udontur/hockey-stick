@@ -8,6 +8,7 @@ import (
 	"hockey-stick/hockey/types"
 	"os"
 	"strconv"
+	"strings"
 )
 
 var primary=lipgloss.Color("#FFFFFF")
@@ -16,6 +17,8 @@ var theme=lipgloss.Color("#01B2BA")
 
 type model struct {
 	table table.Model
+	title string
+	tableWidth int
 }
 
 func (m model) Init() tea.Cmd {
@@ -40,13 +43,28 @@ var baseStyle = lipgloss.NewStyle().
 	BorderForeground(secondary)
 
 func (m model) View() tea.View {
-	return tea.NewView(baseStyle.Render(m.table.View())+"\n"+m.table.HelpView()+"\n")
+	var header=lipgloss.NewStyle().
+		Width(m.tableWidth).
+		Bold(true).
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderForeground(secondary).
+		BorderBottom(true).
+		Foreground(secondary).
+		Padding(0, 1).
+		Align(lipgloss.Center).
+		Render(m.title)
+
+	var body = m.table.View()
+	var tableHeaderLinePos=strings.Index(body, "\n")
+	body=body[tableHeaderLinePos+1:]
+	var document=header+"\n"+body
+	return tea.NewView(baseStyle.Render(document)+"\n"+m.table.HelpView()+"\n")
 }
 
 func DisplayResult(stick types.Stick) {
 	var columns = []table.Column{
-		{Title: "Spec", Width: 7},
-		{Title: "Val", Width: 5},
+		{Title: "", Width: 7},
+		{Title: "", Width: 5},
 	}
 
 	var rows = []table.Row{
@@ -58,21 +76,14 @@ func DisplayResult(stick types.Stick) {
 	}
 
 	var style=table.DefaultStyles()
-	style.Header=lipgloss.NewStyle().
-		Bold(true).
-		BorderStyle(lipgloss.NormalBorder()).
-		BorderForeground(secondary).
-		BorderBottom(true).
-		Foreground(secondary).
-		Padding(0, 1).
-		Align(lipgloss.Center)
+	style.Header=lipgloss.NewStyle()
 	style.Cell=lipgloss.NewStyle().
 		Foreground(primary).
 		Padding(0, 1)
 
 	var tableWidth=0
 	for _, v := range columns{
-		tableWidth+=v.Width
+		tableWidth+=v.Width+2
 	}
 
 	var displayTable=table.New(
@@ -80,11 +91,15 @@ func DisplayResult(stick types.Stick) {
 		table.WithRows(rows),
 		table.WithFocused(true),
 		table.WithHeight(len(rows)+1),
-		table.WithWidth(tableWidth+4),
+		table.WithWidth(tableWidth),
 		table.WithStyles(style),
 	)
 
-	var p = tea.NewProgram(model{displayTable})
+	var p = tea.NewProgram(model{
+		table: displayTable,
+		title: "Your Ideal Stick Specs",
+		tableWidth: tableWidth,
+	})
 	if _, err := p.Run(); err != nil {
 		fmt.Printf("Bad bad: %v", err)
 		os.Exit(1)
