@@ -1,14 +1,10 @@
 - [ ] Bubble tea TUI display
-- [ ] Check for GO's best practice
+    - [ ] Center header
+    - [ ] Background highlight theme color
+- [ ] Kilo code review (add go best practices and industry standards, disable PR review)
 - [ ] Format and check for bad code
 - [x] Installation (GoReleaser: .deb, .rpm, .tar.xz binary)
-- [x] use Charm VHS to record a demo 
+- [ ] use Charm VHS to record a demo 
 - [x] Make Readme with demo, install instructions
-
-_____________________
-| Your hockey stick |
-_____________________
-|Curve   |   P92    |
-|Flex    |    52    |
-|Length  |   58"    | 
-_____________________
+- [ ] Check if readme is good
+- [ ] Make a release and ship to horizons
