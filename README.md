@@ -23,8 +23,3 @@ hockey-stick
 
 ## Why?
 It's just a tiny project for me to get started with Go and its tech stack. 
-
-## AI Usage for Horizons Arcana
-- Refactor form and display theme color variable (generated code IS used)
-- Some form TUI theme debugging (generated code is NOT used)
-- Kilo code review (generated code is NOT used)
