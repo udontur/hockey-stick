@@ -4,16 +4,14 @@ A terminal tool that finds your ideal hockey stick specs.
 It's just a tiny project for me to get started with Go and its tech stack.
 ![](assets/demo.gif)
 
-## Installation
-`hockey-stick` is supported on Linux `x86_64` and `arm64`.
-
-You can install `hockey-stick` with our standalone installer:
+## Installation (Linux)
+A standalone installer is available for Linux (`x86_64` and `arm64`):
 ```bash
 curl -LsSf https://install.hadrian.cc/hockey-stick | sh
 ```
 
 > [!NOTE]
-> You can also download the latest release from the [release page](https://github.com/udontur/hockey-stick/releases/latest).
+> Native `.deb` and `.rpm` packages are available as well. You can also download the latest release from the [release page](https://github.com/udontur/hockey-stick/releases/latest).
 
 ## Usage
 1. Run the following command in the terminal: 
