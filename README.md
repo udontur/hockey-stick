@@ -1,6 +1,7 @@
 # 🏒 Hockey Stick Selector
 A terminal tool that finds your ideal hockey stick specs. 
 
+It's just a tiny project for me to get started with Go and its tech stack.
 ![](assets/demo.gif)
 
 ## Installation
@@ -20,6 +21,3 @@ curl -LsSf https://install.hadrian.cc/hockey-stick | sh
 hockey-stick
 ```
 2. Answer the questions to find your ideal hockey stick specs!
-
-## Why?
-It's just a tiny project for me to get started with Go and its tech stack. 
